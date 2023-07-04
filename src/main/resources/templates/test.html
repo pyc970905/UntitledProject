@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Untitled Web For Musician</title>
+</head>
+<body>
+<button id="BtnTest" value="테스트용 버튼입니다."/>
+<thblock th:if="${testResponse.nickName} != null">
+    <button th:text="${testResponse.nickName}"/>
+</thblock>
+
+</body>
+<script type="text/javascript" th:src="@{/js/testScript.js}"></script>
+</html>
