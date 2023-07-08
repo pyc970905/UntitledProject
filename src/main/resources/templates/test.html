@@ -4,12 +4,20 @@
     <meta charset="UTF-8">
     <title>Untitled Web For Musician</title>
 </head>
+<!--  -->
 <body>
-<button id="BtnTest" value="테스트용 버튼입니다."/>
-<thblock th:if="${testResponse.nickName} != null">
-    <button th:text="${testResponse.nickName}"/>
-</thblock>
-
+    <button id="btnTest">테스트용 버튼입니다.</button>
+    <button th:if="${testResponse} != null" th:text="${testResponse.nickName}"/>
+    <div class="container">
+        <h1>Ajax 호출</h1>
+        <button id="btnAjaxTest">모든 멤버 찾기</button>
+        <div id="memberListContent"></div>
+    </div>
 </body>
+
+<!-- 스크립트 호출부 -->
 <script type="text/javascript" th:src="@{/js/testScript.js}"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </html>
