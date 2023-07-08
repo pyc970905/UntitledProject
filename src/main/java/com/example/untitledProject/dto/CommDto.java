@@ -1,13 +1,9 @@
-package com.example.untitledProject.Dto;
+package com.example.untitledProject.dto;
 
 import jdk.jfr.Description;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.Data;
 
-@Getter
-@Setter
-@ToString
+@Data
 @Description("공통 DTO")
 public class CommDto {
 
