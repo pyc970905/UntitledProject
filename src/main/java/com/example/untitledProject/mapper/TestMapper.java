@@ -10,4 +10,5 @@ import java.util.List;
 @Mapper
 public interface TestMapper {
     List<TestResponse> testSelect(TestRequest testRequest);
+    int testInsert(TestRequest testRequest);
 }

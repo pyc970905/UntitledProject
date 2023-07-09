@@ -1,8 +1,9 @@
-package com.example.untitledProject.service;
+package com.example.untitledProject.service.test;
 
 import com.example.untitledProject.dto.request.TestRequest;
 import com.example.untitledProject.dto.response.TestResponse;
 import com.example.untitledProject.mapper.TestMapper;
+import com.example.untitledProject.service.test.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,13 +23,22 @@ public class TestServiceImpl implements TestService {
     public List<TestResponse> testSelect(TestRequest testRequest) {
         List<TestResponse> testResponse = new ArrayList<>();
         try {
-            System.out.println("Mapper 호출 시작");
             testResponse = testMapper.testSelect(testRequest);
-            System.out.println("Mapper 호출 종료");
         } catch (NullPointerException e) {
             System.out.println(e.getMessage());
         }
 
         return testResponse;
     }
+    @Override
+    public void testInsert(TestRequest testRequest) {
+        List<TestResponse> testResponse = new ArrayList<>();
+        try {
+            testMapper.testInsert(testRequest);
+        } catch (NullPointerException e) {
+            System.out.println(e.getMessage());
+        }
+
+    }
+
 }
