@@ -11,17 +11,26 @@ spring:
     password: okto2679!@#
     url: jdbc:mysql://localhost:3306/untitledProject?&serverTimezone=UTC&autoReconnect=true&allowMultiQueries=true&characterEncoding=UTF-8
     driver: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  mvc:
+    contentnegotiation:
+      media-types:
+        form-urlencoded: application/x-www-form-urlencoded
 # MyBatis ??
 mybatis:
+  mapper-locations: classpath:mapper/*.xml
   configuration:
     map-underscore-to-camel-case: true
-    mapper-locations: classpath:/mapper/*.xml
-
-
 #????
 
 logging:
   level:
     root: INFO
-    org:
-      mybatis: DEBUG
+    org.springframework: INFO
+    org.mybatis: DEBUG
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{36} - %msg%n"
+
