@@ -1,4 +1,4 @@
 package com.example.untitledProject.service;
 
-public interface ComuService {
+public interface HomeService {
 }

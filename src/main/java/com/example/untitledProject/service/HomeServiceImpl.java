@@ -6,7 +6,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Transactional
-@Description("커뮤니티 메뉴 서비스")
-public class ComuServiceImpl implements ComuService{
-
+@Description("홈 메뉴 서비스")
+public class HomeServiceImpl implements HomeService {
 }

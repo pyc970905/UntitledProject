@@ -5,5 +5,36 @@
 
 <mapper namespace="com.example.untitledProject.mapper.CommuMapper">
 
+    <select id="selectCommuPostsList" parameterType="com.example.untitledProject.dto.request.CommuReq"
+            resultType="com.example.untitledProject.dto.response.CommuRes">
+        SELECT * FROM COMMU
+    </select>
+
+    <insert id="insertCommuContent" parameterType="com.example.untitledProject.dto.request.CommuReq">
+        INSERT INTO COMMU
+        ( _ID,
+        TITLE,
+        CONTENT,
+        WRITER,
+        RGST_IP,
+        RGST_ID,
+        RGST_DTM,
+        CHG_IP,
+        CHG_ID,
+        CHG_DTM
+        )
+        VALUES
+        ( NULL,
+        #{title},
+        #{content},
+        #{writer},
+        #{rgst_ip},
+        #{rgst_id},
+        sysdate(),
+        #{rgst_ip},
+        #{rgst_id},
+        sysdate(),
+        )
+    </insert>
 
 </mapper>
