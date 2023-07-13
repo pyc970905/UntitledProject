@@ -10,6 +10,7 @@
 <div class="container">
     <h1>소통 게시판</h1>
     <div id="postingCommuForm"></div>
+    <div id="commuContent"></div>
     <!-- 게시물 목록 -->
     <table class="table">
         <thead>
@@ -23,9 +24,10 @@
         <tbody>
         <th:block th:if="${commuPostsList} != null">
             <tr th:each="commuPostsList : ${commuPostsList}">
-                <td>[[${commuPostsList._id}]]</td>
-                <td>[[${commuPostsList.title}]]</td>
+                <td>[[${commuPostsList.commNo}]]</td>
+                <td th:onclick="'javascript:fn_showCommuDtl('+ ${commuPostsList.commNo} + ');'">[[${commuPostsList.title}]]</td>
                 <td>[[${commuPostsList.writer}]]</td>
+                <td>[[${commuPostsList.views}]]</td>
             </tr>
         </th:block>
         <!-- 게시물 데이터를 서버에서 동적으로 가져와서 출력할 수도 있습니다. -->

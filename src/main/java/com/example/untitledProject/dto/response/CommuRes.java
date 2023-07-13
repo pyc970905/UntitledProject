@@ -11,14 +11,15 @@ import org.springframework.context.annotation.Description;
 @ToString
 @Description("커뮤니티 화면 응답 VO")
 public class CommuRes extends CommDto {
-
-    private Integer _id;
+    private Integer commNo;
 
     private String writer;
 
     private String title;
 
     private String content;
+
+    private Integer views;
 
     private String errMsg;
 }

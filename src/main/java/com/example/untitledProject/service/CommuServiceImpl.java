@@ -32,4 +32,13 @@ public class CommuServiceImpl implements CommuService {
     public void postCommuContent(CommuReq commuReq) {
         commuMapper.insertCommuContent(commuReq);
     };
+
+    @Override
+    public CommuRes getCommuPostOne(CommuReq commuReq) {
+
+        commuMapper.updateCommContentViews(commuReq);
+        CommuRes result = commuMapper.selectCommuPostOne(commuReq);
+
+        return result;
+    };
 }

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<br>
+
+<div class="mb-3">
+  <label for="postedTitle" class="form-label">제목</label>
+  <span type="text" class="form-control" id="postedTitle" readonly="true">
+  [[${commContent.title}]]
+  </span>
+</div>
+<div class="mb-3">
+  <label for="postedWriter" class="form-label">작성자</label>
+  <span type="text" class="form-control" id="postedWriter"readonly="true">
+    [[${commContent.writer}]]
+  </span>
+</div>
+<div class="mb-3">
+  <label for="postedContent" class="form-label">내용</label>
+  <span class="form-control" id="postedContent" readonly="true" style="height : 300px">
+    [[${commContent.content}]]
+  </span>
+</div>
+<br>
+<br>
+<br>
+<!-- 스크립트 호출부-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+<script type="text/javascript" th:src="@{/js/commu.js}"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</html>

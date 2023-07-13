@@ -11,12 +11,18 @@ function bindButtonEvent() {
             $.ajax({
                type: "GET",
                url: "/commu/post",
+               dataType : "html",
+               cache : false
                // data: form, // api 호출을 위한 요청 변수가 필요하다면 사용해주세요.
-               dataType: "text"
             })
                .done(function (result) {
-                   $("#postingCommuForm").replaceWith(result);
+                   $("#commuContent").children().remove();
+                   $('#postingCommuForm').children().remove();
+                   $('#postingCommuForm').html(result);
                    $("#btnCommuForm").hide();
+
+
+                   bindButtonEvent2();
                })
                .fail(function(jqXHR) {
                    console.log(jqXHR);
@@ -26,15 +32,23 @@ function bindButtonEvent() {
         }
     );
 
-    $("#btnPostCommuContent").on('click', function getMemberList()
+
+
+
+};
+
+function bindButtonEvent2() {
+
+$("#btnPostCommuContent").on('click', function getMemberList()
             {
-               console.log("hello")
+              console.log("hello");
+
               var commuReq = {};
 
               commuReq.title    = $("#commuTitle").val();
               commuReq.content  = $("#commuContent").val();
               commuReq.writer   = $("#commuWriter").val();
-
+              console.log(commuReq);
                 $.ajax({
                    type: "POST",
                    url: "/commu/post",
@@ -43,7 +57,7 @@ function bindButtonEvent() {
                 })
                    .done(function (result) {
                        alert("저장완료되었습니다.");
-                       //window.location.href = "";
+                       window.location.href = "";
                    })
                    .fail(function(jqXHR) {
                        console.log(jqXHR);
@@ -51,6 +65,28 @@ function bindButtonEvent() {
                    .always(function() {
                    })
             }
-        );
+);
 
-};
+}
+
+function fn_showCommuDtl(no) {
+
+     $.ajax({
+                    type: "GET",
+                    url: "/commu/content/"+ no,
+                    dataType : "html",
+                    cache : false
+                       // data: form, // api 호출을 위한 요청 변수가 필요하다면 사용해주세요.
+                    })
+                       .done(function (result) {
+                           $("#postingCommuForm").children().remove();
+                           $('#commuContent').children().remove();
+                           $('#commuContent').html(result);
+
+                       })
+                       .fail(function(jqXHR) {
+                           console.log(jqXHR);
+                       })
+                       .always(function() {
+                       })
+}
