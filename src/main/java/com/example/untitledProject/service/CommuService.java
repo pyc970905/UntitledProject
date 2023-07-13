@@ -11,4 +11,6 @@ public interface CommuService {
     public List<CommuRes> getCommuPostsList(CommuReq commuReq);
 
     public void postCommuContent(CommuReq commuReq);
+    public CommuRes getCommuPostOne(CommuReq commuReq);
+
 }

@@ -7,34 +7,58 @@
 
     <select id="selectCommuPostsList" parameterType="com.example.untitledProject.dto.request.CommuReq"
             resultType="com.example.untitledProject.dto.response.CommuRes">
-        SELECT * FROM COMMU
+        SELECT
+            *
+        FROM
+            COMMU
+        ORDER BY
+            COMM_NO DESC
     </select>
 
     <insert id="insertCommuContent" parameterType="com.example.untitledProject.dto.request.CommuReq">
-        INSERT INTO COMMU
-        ( _ID,
-        TITLE,
-        CONTENT,
-        WRITER,
-        RGST_IP,
-        RGST_ID,
-        RGST_DTM,
-        CHG_IP,
-        CHG_ID,
-        CHG_DTM
-        )
-        VALUES
-        ( NULL,
-        #{title},
-        #{content},
-        #{writer},
-        #{rgst_ip},
-        #{rgst_id},
-        sysdate(),
-        #{rgst_ip},
-        #{rgst_id},
-        sysdate(),
-        )
+        <![CDATA[
+           INSERT INTO COMMU
+            ( COMM_NO,
+            TITLE,
+            CONTENT,
+            WRITER,
+            VIEWS,
+            RGST_IP,
+            RGST_ID,
+            RGST_DTM,
+            CHG_IP,
+            CHG_ID,
+            CHG_DTM
+            )
+            VALUES
+            ( NULL,
+            #{title},
+            #{content},
+            #{writer},
+            0,
+            #{rgstIp},
+            #{rgstId},
+            sysdate(),
+            #{rgstIp},
+            #{rgstId},
+            sysdate()
+            )
+        ]]>
     </insert>
 
+    <update id="updateCommContentViews" parameterType="com.example.untitledProject.dto.request.CommuReq">
+        UPDATE COMMU
+        SET VIEWS = VIEWS + 1
+        WHERE COMM_NO = #{commNo}
+    </update>
+
+    <select id="selectCommuPostOne" parameterType="com.example.untitledProject.dto.request.CommuReq"
+            resultType="com.example.untitledProject.dto.response.CommuRes">
+        SELECT
+            *
+        FROM
+            COMMU
+        WHERE
+            COMM_NO = #{commNo}
+    </select>
 </mapper>

@@ -13,4 +13,8 @@ public interface CommuMapper {
     List<CommuRes> selectCommuPostsList(CommuReq commuReq);
 
     void insertCommuContent(CommuReq commuReq);
+
+    void updateCommContentViews(CommuReq commuReq);
+    CommuRes selectCommuPostOne(CommuReq commuReq);
+
 }

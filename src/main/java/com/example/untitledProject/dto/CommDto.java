@@ -6,6 +6,8 @@ import lombok.Data;
 @Data
 @Description("공통 DTO")
 public class CommDto {
+    @Description("pk")
+    private Long _id;
 
     @Description("등록자ID")
     private String rgstId;
