@@ -22,7 +22,7 @@ function bindButtonEvent() {
                    $("#btnCommuForm").hide();
 
 
-                   bindButtonEvent2();
+                   //bindButtonEvent2();
                })
                .fail(function(jqXHR) {
                    console.log(jqXHR);

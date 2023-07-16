@@ -3,6 +3,7 @@ package com.example.untitledProject.controller;
 import com.example.untitledProject.Utils.ClientUtils;
 import com.example.untitledProject.dto.request.CommuReq;
 import com.example.untitledProject.dto.response.CommuRes;
+import com.example.untitledProject.dto.response.DemoRes;
 import com.example.untitledProject.service.CommuService;
 import com.example.untitledProject.service.DemoService;
 import com.example.untitledProject.service.HomeService;
@@ -56,8 +57,9 @@ public class MainController {
     }
 
     @GetMapping("/demo")
-    public String getDemoPage(){
-
+    public String getDemoPage(Model model){
+        List<DemoRes> demoPostsList = demoService.getDemoPostsList(null);
+        model.addAttribute("demoPostsList", demoPostsList);
         return "demo";
     }
 }

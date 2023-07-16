@@ -2,10 +2,26 @@ server:
   port:8080
 
 spring:
+  resources:
+    cache:
+      period: 0
+      cachecontrol:
+        no-store: true
+  servlet:
+    multipart:
+      resolve-lazily: true
+      enabled: true
+      max-file-size: 10MB
+      max-request-size: 10MB
   thymeleaf:
     cache: false
     prefix: classpath:/templates/
     suffix: .html
+  devtools:
+    livereload:
+      enabled: true
+    restart:
+      enabled: true
   datasource:
     username: root
     password: okto2679!@#
@@ -33,5 +49,4 @@ logging:
     org.mybatis: DEBUG
   pattern:
     console: "%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{36} - %msg%n"
-
 

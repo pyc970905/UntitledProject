@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <br>
-
+<form action="/commu/post" method="POST" enctype="multipart/form-data">
     <div class="mb-3">
         <label for="commuTitle" class="form-label">제목</label>
         <input type="text" class="form-control" id="commuTitle" name="title" required>
@@ -14,7 +14,14 @@
         <label for="commuContent" class="form-label">내용</label>
         <textarea class="form-control" id="commuContent" name="content" required style="height : 300px"></textarea>
     </div>
+    <div class="mb-3">
+        <label for="commuFile">파일</label>
+        <br>
+        <input type="file" id="commuFile" name="commuFile"/>
+    </div>
+    <br>
     <button id="btnPostCommuContent" class="btn btn-primary">작성</button>
+</form>
 <br>
 <br>
 <br>
