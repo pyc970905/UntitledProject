@@ -32,10 +32,9 @@ out/
 /dist/
 /nbdist/
 /.nb-gradle/
-
+application.yml
 ### VS Code ###
 .vscode/
 
-########
-application.yml
+ㄴㅁ
 static/file/**
