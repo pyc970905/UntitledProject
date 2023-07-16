@@ -5,6 +5,122 @@
 
 <mapper namespace="com.example.untitledProject.mapper.DemoMapper">
 
+    <select id="selectDemoPostsList" parameterType="com.example.untitledProject.dto.request.DemoReq"
+            resultType="com.example.untitledProject.dto.response.DemoRes">
+        SELECT /*selectDemoPostsList*/
+        A.*,
+        B.ORG_FILE_NAME,
+        B.FILE_URL,
+        B.FILE_DIV_CD,
+        B.FILE_UUID,
+        B.FILE_EXT
+        FROM
+        DEMO A,
+        DEMO_FILE B
+        WHERE A.FILE_NO = B.FILE_NO
+        AND A.FILE_UUID = B.FILE_UUID
+        ORDER BY
+        DEMO_NO DESC
+    </select>
+
+    <select id="selectFileNo" parameterType="com.example.untitledProject.dto.request.DemoReq"
+            resultType="com.example.untitledProject.dto.response.DemoRes">
+        SELECT /*selectFileNo*/
+        MAX(FILE_NO) AS FILE_NO
+        FROM
+        DEMO_FILE
+    </select>
+
+    <insert id="insertDemoContent" parameterType="com.example.untitledProject.dto.request.DemoReq">
+        <![CDATA[
+           INSERT INTO DEMO /*insertDemoContent*/
+            ( DEMO_NO,
+            TITLE,
+            CONTENT,
+            WRITER,
+            VIEWS,
+            FILE_NO,
+            FILE_UUID,
+            RGST_IP,
+            RGST_ID,
+            RGST_DTM,
+            CHG_IP,
+            CHG_ID,
+            CHG_DTM
+            )
+            VALUES
+            ( NULL,
+            #{title},
+            #{content},
+            #{writer},
+            0,
+            #{fileNo},
+            #{fileUuid},
+            #{rgstIp},
+            #{rgstId},
+            sysdate(),
+            #{rgstIp},
+            #{rgstId},
+            sysdate()
+            )
+        ]]>
+    </insert>
+
+    <update id="updateDEMOContentViews" parameterType="com.example.untitledProject.dto.request.DemoReq">
+        UPDATE DEMO /*updateDEMOContentViews*/
+        SET VIEWS = VIEWS + 1
+        WHERE DEMO_NO = #{demoNo}
+    </update>
+
+    <select id="selectDemoPostOne" parameterType="com.example.untitledProject.dto.request.DemoReq"
+            resultType="com.example.untitledProject.dto.response.DemoRes">
+        SELECT /*selectDemoPostOne*/
+        A.*,
+        B.ORG_FILE_NAME,
+        B.FILE_URL,
+        B.FILE_DIV_CD,
+        B.FILE_UUID,
+        B.FILE_EXT
+        FROM
+        DEMO A,
+        DEMO_FILE B
+        WHERE A.FILE_NO = B.FILE_NO
+        AND A.FILE_UUID = B.FILE_UUID
+        AND DEMO_NO = #{demoNo}
+    </select>
+
+    <insert id="insertDemoFile" parameterType="com.example.untitledProject.dto.FileDto">
+        <![CDATA[
+           INSERT INTO DEMO_FILE /*insertDemoFile*/
+            ( FILE_NO,
+             FILE_UUID,
+             FILE_URL,
+             ORG_FILE_NAME,
+             FILE_EXT,
+             FILE_DIV_CD,
+             CHG_IP,
+             CHG_ID,
+             CHG_DTM,
+             RGST_IP,
+             RGST_ID,
+             RGST_DTM
+            )
+            VALUES
+            ( NULL,
+            #{fileUuid},
+            #{fileUrl},
+            #{orgFileName},
+            #{fileExt},
+            #{fileDivCd},
+            #{rgstIp},
+            #{rgstId},
+            sysdate(),
+            #{rgstIp},
+            #{rgstId},
+            sysdate()
+            )
+        ]]>
+    </insert>
 
 
 </mapper>

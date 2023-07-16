@@ -1,5 +1,6 @@
 package com.example.untitledProject.mapper;
 
+import com.example.untitledProject.dto.FileDto;
 import com.example.untitledProject.dto.request.CommuReq;
 import com.example.untitledProject.dto.request.TestRequest;
 import com.example.untitledProject.dto.response.CommuRes;
@@ -16,5 +17,7 @@ public interface CommuMapper {
 
     void updateCommContentViews(CommuReq commuReq);
     CommuRes selectCommuPostOne(CommuReq commuReq);
+    CommuRes selectFileNo(CommuReq commuReq);
+    void insertCommuFile(FileDto fileDto);
 
 }

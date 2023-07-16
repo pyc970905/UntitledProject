@@ -11,4 +11,28 @@ import org.springframework.context.annotation.Description;
 @ToString
 @Description("데 화면 응답 VO")
 public class DemoRes extends CommDto {
+
+    private Integer demoNo;
+
+    private String writer;
+
+    private String title;
+
+    private String content;
+
+    private Integer views;
+
+    private String errMsg;
+
+    private String orgFileName;
+
+    private String fileUrl;
+
+    private String fileNo;
+
+    private String fileUuid;
+
+    private String fileExt;
+
+    private String fileDivCd;
 }

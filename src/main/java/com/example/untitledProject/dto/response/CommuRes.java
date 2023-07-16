@@ -22,4 +22,16 @@ public class CommuRes extends CommDto {
     private Integer views;
 
     private String errMsg;
+
+    private String orgFileName;
+
+    private String fileUrl;
+
+    private String fileNo;
+
+    private String fileUuid;
+
+    private String fileExt;
+
+    private String fileDivCd;
 }

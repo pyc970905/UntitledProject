@@ -23,4 +23,10 @@ public class CommuReq extends CommDto {
 
     @jdk.jfr.Description("게시글 내용")
     private String commNo;
+
+    private String fileUuid;
+
+    private String fileNo;
+
+    private String fileDivCd;
 }

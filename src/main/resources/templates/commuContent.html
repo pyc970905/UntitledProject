@@ -18,7 +18,18 @@
   <label for="postedContent" class="form-label">내용</label>
   <span class="form-control" id="postedContent" readonly="true" style="height : 300px">
     [[${commContent.content}]]
+    <br>
+    <th:block th:if="${commContent.fileDivCd == '0'}">
+      <img th:src="@{/file/{fileUrl}(fileUrl=${commContent.fileUuid} + ${commContent.fileExt})}" alt="첨부이미지" th:if="${commContent.fileUrl != null}" />
+    </th:block>
   </span>
+</div>
+<div class="mb-3">
+  <label for="postedContent" class="form-label">첨부파일</label>
+  <br>
+  <a id="postedFile"  th:href="@{/commu/content/download/{commNo}(commNo = ${commContent.commNo})}" download readonly="true">
+    [[${commContent.orgFileName}]]
+  </a>
 </div>
 <br>
 <br>

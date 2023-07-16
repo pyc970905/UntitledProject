@@ -7,7 +7,7 @@
 
     <select id="selectCommuPostsList" parameterType="com.example.untitledProject.dto.request.CommuReq"
             resultType="com.example.untitledProject.dto.response.CommuRes">
-        SELECT
+        SELECT /*selectCommuPostsList*/
             *
         FROM
             COMMU
@@ -15,14 +15,24 @@
             COMM_NO DESC
     </select>
 
+    <select id="selectFileNo" parameterType="com.example.untitledProject.dto.request.CommuReq"
+            resultType="com.example.untitledProject.dto.response.CommuRes">
+        SELECT /*selectFileNo*/
+        MAX(FILE_NO) AS FILE_NO
+        FROM
+        COMM_FILE
+    </select>
+
     <insert id="insertCommuContent" parameterType="com.example.untitledProject.dto.request.CommuReq">
         <![CDATA[
-           INSERT INTO COMMU
+           INSERT INTO COMMU /*insertCommuContent*/
             ( COMM_NO,
             TITLE,
             CONTENT,
             WRITER,
             VIEWS,
+            FILE_NO,
+            FILE_UUID,
             RGST_IP,
             RGST_ID,
             RGST_DTM,
@@ -36,6 +46,8 @@
             #{content},
             #{writer},
             0,
+            #{fileNo},
+            #{fileUuid},
             #{rgstIp},
             #{rgstId},
             sysdate(),
@@ -47,18 +59,60 @@
     </insert>
 
     <update id="updateCommContentViews" parameterType="com.example.untitledProject.dto.request.CommuReq">
-        UPDATE COMMU
+        UPDATE COMMU /*updateCommContentViews*/
         SET VIEWS = VIEWS + 1
         WHERE COMM_NO = #{commNo}
     </update>
 
     <select id="selectCommuPostOne" parameterType="com.example.untitledProject.dto.request.CommuReq"
             resultType="com.example.untitledProject.dto.response.CommuRes">
-        SELECT
-            *
+        SELECT /*selectCommuPostOne*/
+            A.*,
+            B.ORG_FILE_NAME,
+            B.FILE_URL,
+            B.FILE_DIV_CD,
+            B.FILE_UUID,
+            B.FILE_EXT
         FROM
-            COMMU
-        WHERE
-            COMM_NO = #{commNo}
+            COMMU A,
+            COMM_FILE B
+        WHERE A.FILE_NO = B.FILE_NO
+          AND A.FILE_UUID = B.FILE_UUID
+          AND COMM_NO = #{commNo}
     </select>
+
+    <insert id="insertCommuFile" parameterType="com.example.untitledProject.dto.FileDto">
+        <![CDATA[
+           INSERT INTO COMM_FILE /*insertCommuFile*/
+            ( FILE_NO,
+             FILE_UUID,
+             FILE_URL,
+             ORG_FILE_NAME,
+             FILE_EXT,
+             FILE_DIV_CD,
+             CHG_IP,
+             CHG_ID,
+             CHG_DTM,
+             RGST_IP,
+             RGST_ID,
+             RGST_DTM
+            )
+            VALUES
+            ( NULL,
+            #{fileUuid},
+            #{fileUrl},
+            #{orgFileName},
+            #{fileExt},
+            #{fileDivCd},
+            #{rgstIp},
+            #{rgstId},
+            sysdate(),
+            #{rgstIp},
+            #{rgstId},
+            sysdate()
+            )
+        ]]>
+    </insert>
+
+
 </mapper>
